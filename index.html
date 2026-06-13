@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Teacher</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+    overflow:hidden;
+    text-align:center;
+    padding:20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.95);
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    max-width:600px;
+    width:100%;
+    z-index:2;
+}
+
+h1{
+    color:#ff4081;
+    font-size:clamp(2rem,5vw,3.5rem);
+    margin-bottom:15px;
+}
+
+h2{
+    color:#333;
+    margin-bottom:15px;
+}
+
+p{
+    color:#555;
+    font-size:1.1rem;
+    line-height:1.7;
+}
+
+.cake{
+    font-size:70px;
+    margin:15px 0;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+/* Balloons */
+.balloon{
+    position:absolute;
+    bottom:-150px;
+    width:60px;
+    height:80px;
+    border-radius:50%;
+    animation:floatUp linear infinite;
+}
+
+.balloon::after{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:60px;
+    background:#555;
+    left:50%;
+    top:80px;
+}
+
+.red{background:#ff4d4d;}
+.blue{background:#4da6ff;}
+.yellow{background:#ffd633;}
+.green{background:#66cc66;}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+/* Confetti */
+.confetti{
+    position:fixed;
+    width:10px;
+    height:10px;
+    top:-10px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+    }
+}
+
+@media(max-width:600px){
+    .card{
+        padding:20px;
+    }
+
+    p{
+        font-size:1rem;
+    }
+
+    .cake{
+        font-size:55px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Balloons -->
+<div class="balloon red" style="left:10%; animation-duration:10s;"></div>
+<div class="balloon blue" style="left:30%; animation-duration:12s;"></div>
+<div class="balloon yellow" style="left:60%; animation-duration:9s;"></div>
+<div class="balloon green" style="left:85%; animation-duration:11s;"></div>
+
+<div class="card">
+    <h1>🎉 Happy Birthday 🎉</h1>
+    <h2>Dear Teacher</h2>
+
+    <div class="cake">🎂</div>
+
+    <p>
+        Wishing you a wonderful birthday filled with happiness,
+        good health, and endless joy. Thank you for your guidance,
+        patience, and inspiration. You have made a positive impact
+        on so many lives through your teaching.
+        <br><br>
+        May your special day be as amazing as you are!
+        🎈🎁✨
+    </p>
+</div>
+
+<script>
+// Confetti Animation
+function createConfetti() {
+    const colors = [
+        "#ff4d4d",
+        "#4da6ff",
+        "#66cc66",
+        "#ffd633",
+        "#ff66cc",
+        "#9966ff"
+    ];
+
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+
+    confetti.style.left = Math.random() * window.innerWidth + "px";
+    confetti.style.backgroundColor =
+        colors[Math.floor(Math.random() * colors.length)];
+
+    const size = Math.random() * 10 + 5;
+    confetti.style.width = size + "px";
+    confetti.style.height = size + "px";
+
+    confetti.style.animationDuration =
+        Math.random() * 3 + 3 + "s";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+        confetti.remove();
+    }, 7000);
+}
+
+// Continuous Confetti
+setInterval(createConfetti, 120);
+</script>
+
+</body>
+</html>
